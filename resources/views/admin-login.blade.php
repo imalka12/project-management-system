@@ -87,6 +87,7 @@
 <body class="text-center">
 
     <main class="form-signin">
+        @include('includes.header')
         <form method="POST" action="{{ route('auth.login') }}">
             @csrf
 

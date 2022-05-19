@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectPaymentController;
 use App\Http\Controllers\UserController;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
@@ -39,9 +40,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/projects', [ProjectController::class, 'showCreateProject'])
         ->name('create-project');
-    Route::post('/project', [ProjectController::class, 'addProject'])
+    Route::post('/projects', [ProjectController::class, 'addProject'])
         ->name('add-project');
-    Route::post('projec/delete/{project}', [ProjectController::class, 'deleteProject'])
+    Route::post('project/delete/{project}', [ProjectController::class, 'deleteProject'])
         ->name('delete-project');
     Route::get('project/edit/{project}', [ProjectController::class, 'editProject'])
         ->name('edit-project');
@@ -86,7 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/delete/{user}', [UserController::class, 'deleteUser'])
         ->name('delete-user');
 
-        
+
     Route::get('/payments', [PaymentController::class, 'showCreatePayments'])
         ->name('create-payment');
     Route::post('/payments', [PaymentController::class, 'addPayment'])
@@ -97,4 +98,7 @@ Route::middleware('auth')->group(function () {
         ->name('edit-payment');
     Route::post('payment/edit/{payment}', [PaymentController::class, 'updatePayment'])
         ->name('update-payment');
+
+    Route::get('/project/payments', [ProjectPaymentController::class, 'showProjectPayments'])
+        ->name('create-project-payment');
 });

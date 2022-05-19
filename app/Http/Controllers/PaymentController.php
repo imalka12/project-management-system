@@ -40,14 +40,13 @@ class PaymentController extends Controller
     {
         $payment_types = PaymentType::asSelectArray();
         $payment_methods = PaymentMethod::asSelectArray();
-        
+
         $projects = Project::all();
         return view('payments-edit' , compact('payment', 'projects', 'payment_types', 'payment_methods'));
     }
 
     public function updatePayment(CreatePaymentRequest $request, Payment $payment)
     {
-        dd($payment);
         $payment = Payment::whereId($payment->id)->first();
         $payment->update([
             'project_id' => $request->get('project_id'),
@@ -60,4 +59,6 @@ class PaymentController extends Controller
 
         return redirect()->route('create-payment');
     }
+
+    
 }

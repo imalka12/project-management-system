@@ -103,6 +103,12 @@
                                 Users
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('create-project-payment') }}">
+                                <span data-feather="file"></span>
+                                Project Payments
+                            </a>
+                        </li>
                     </ul>
 
                     <h6

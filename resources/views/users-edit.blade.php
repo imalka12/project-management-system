@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
-                <form action="" method="post">
+                <form action="{{ route('update-user', $user->id) }}" method="post">
                     <div class="card-body">
                         <h4 class="card-text mb-3">
                             Edit user details
@@ -23,10 +23,10 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}">
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" value="{{ $user->password }}">
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update User</button>

@@ -26,7 +26,7 @@
                             <label for="project_id" class="form-label">Project</label>
                             <select name="project_id" id="project_id" class="form-control">
                                 @foreach ($projects as $project)
-                                <option value="$payment->project_id" {{ $payment->project_id == $project->id ? 'selected' : '' }}>{{ $project->name }}</option>
+                                <option value="{{ $payment->project_id }}" {{ $payment->project_id == $project->id ? 'selected' : '' }}>{{ $project->name }}</option>
                                 @endforeach
                             </select>
                         </div> 
