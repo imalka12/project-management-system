@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LetterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
@@ -42,7 +43,7 @@ Route::middleware('auth')->group(function () {
         ->name('create-project');
     Route::post('/projects', [ProjectController::class, 'addProject'])
         ->name('add-project');
-    Route::post('project/delete/{project}', [ProjectController::class, 'deleteProject'])
+    Route::delete('project/delete/{project}', [ProjectController::class, 'deleteProject'])
         ->name('delete-project');
     Route::get('project/edit/{project}', [ProjectController::class, 'editProject'])
         ->name('edit-project');
@@ -101,4 +102,36 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/project/payments', [ProjectPaymentController::class, 'showProjectPayments'])
         ->name('create-project-payment');
+
+    Route::get('/payments/reports', [PaymentController::class, 'paymentsReport'])
+        ->name('payment-report');
+    Route::post('payment/reports', [PaymentController::class, 'paymentReportGenerate'])
+        ->name('payment-report-generate');
+
+    Route::get('/selectors', [ClientController::class, 'showSelectorPage'])
+        ->name('project-client');
+    Route::get('/members_js', [MemberController::class, 'showMembersPage'])
+        ->name('members.j');
+    Route::get('/clients_js', [ClientController::class, 'showClientsPage'])
+        ->name('clients.j');
+    Route::get('/payments_js', [PaymentController::class, 'showPaymentsPage'])
+        ->name('payments.j');
+
+
+    Route::get('/member/profile', [MemberController::class, 'showMemberProfilePage'])
+        ->name('member.profile');
+
+    #new member
+    Route::get('/payments-details', [PaymentController::class, 'getPaymentDetailsView'])
+        ->name('show.payments.details');
+
+    Route::post('/payments-details', [PaymentController::class, 'getPayemtnsByDate'])
+        ->name('get.payments.by.date');
+
+    Route::post('/view/payment/{payment}', [PaymentController::class, 'viewPayementDetails'])
+        ->name('view.payment.details');
+
+    //letters
+    Route::get('/letter', [LetterController::class, 'viewLetter'])->name('view.letter');
+    Route::post('/letter', [LetterController::class, 'createLetter'])->name('create.letter');
 });

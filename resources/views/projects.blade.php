@@ -116,10 +116,11 @@
                                         <td>
                                             <a href="{{ route('edit-project', $project->id) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>
-                                            <form action="{{ route('delete-project', $project->id) }}" method="post"
+                                            <form action="{{ route('delete-project', $project->id) }}" method="post" 
                                                 class="d-inline"
                                                 onsubmit="return confirm('Are you sure you need to delete this project?\n\nPlease note that all the associated values too will be deleted.')">
                                                 @csrf
+                                                @method('Delete')
                                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                             </form>
                                         </td>

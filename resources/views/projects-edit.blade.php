@@ -74,7 +74,7 @@
                         </div> --}}
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary col-4" type="submit">Create</button>
+                        <button class="btn btn-primary col-4" type="submit">Update Project</button>
                     </div>
                 </form>
             </div>
